@@ -12,15 +12,14 @@ const App: React.FC<{}> = () => {
         setRemained(2 - (250 * fullCups / 1000));
     }, [fullCups]);
 
-    const handleClick = (index: number) => {
-        if (index === 7 && fullCups === 8) {
-            setFullCups(7);
-        } else if (fullCups === index + 1) {
-            setFullCups(index);
-        } else {
-            setFullCups(index + 1);
-        }
-    };
+const handleClick = (index: number) => {
+    const newFullCups = fullCups === index + 1 
+        ? index 
+        : (index === 7 && fullCups === 8) 
+            ? 7 
+            : index + 1;
+    setFullCups(newFullCups);
+};
 
     const smallCups = Array(8).fill(0).map((_, index: number) => (
         <div
